@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Angular Controller</title>
+<script src="angular.js"></script>
+<script>
+var obj = angular.module("myApp",[]);
+obj.controller("Login_controller",function($scope){
+	$scope.uname="";
+	$scope.pwd="";
+	$scope.result="";
+	$scope.login=function(){
+		if($scope.uname=="admin" && $scope.pwd=="admin123"){
+			$scope.result="welcome Admin";
+		}
+		else{
+			$scope.result="Invalid usrname or pwd";
+		}
+	};
+});
+</script>
+</head>
+<body ng-app="myApp">
+
+<!-- two controllers can be used in different blocks  -->
+
+<div ng-controller="Login_controller">
+User Name : <input ng-model="uname">
+<br><br>
+PWD : <input type="password" ng-model="pwd">
+<br><br>
+<input type="button" ng-click="login()" value="Login"> 
+<h2>{{result}}</h2>
+</div>
+
+
+
+</body>
+
+
+</html>

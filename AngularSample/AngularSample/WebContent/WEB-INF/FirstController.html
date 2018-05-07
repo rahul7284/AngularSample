@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Angular Controller</title>
+<script src="angular.js"></script>
+<script>
+var obj = angular.module("myApp",[]);
+obj.controller("Product_controller",function($scope){
+	$scope.prdobj={
+			pid : 1025,
+			pname :"sony camera",
+			price :"6000"
+			
+			
+	};
+/* this is demo of collection sorting 
+});
+*/
+obj.controller("Student_controller",function($scope){
+	$scope.prdobj={
+			sid : 1025,
+			sname :"rahul",
+			sclass :"mca"
+			
+			
+	};
+	$scope.students =[
+	                  {sname :"rohit",course :"Angular"},
+	                  {sname :"rahul", course :"Html"},
+	                  {sname : "rajiv",course : "Testing"}
+	                  ];
+	$scope.isReverse =false;
+	$scope.sortitem ="sname";
+});
+
+</script>
+</head>
+<body ng-app="myApp">
+
+<div ng-controller="Product_controller">
+Product id : {{prdobj.pid}}</br>
+Product name : {{prdobj.pname}}</br>
+Price : {{prdobj.price}}</br>
+
+</div>
+<!-- two controllers can be used in different blocks  -->
+<div ng-controller="Student_controller">
+Student id : {{prdobj.sid}}</br>
+Student name : {{prdobj.sname}}</br>
+Student class: {{prdobj.sclass}}</br>
+
+<table border="2">
+<tr>
+<th>
+<a href="#" ng-click="isReverse = !isReverse"; sortitem="sname">Student Name</a>
+</th>
+<th>
+<a href="#" ng-click="isReverse = !isReverse"; sortitem="course">Course Name</a>
+</th>
+
+</tr>
+<tr ng-repeat="item in students | orderBy:sortitem:isReverse">
+<td>{{item.sname}}</td>
+<td>{{item.course}}</td>
+</tr>
+</table>
+</div>
+
+
+
+</body>
+
+
+</html>

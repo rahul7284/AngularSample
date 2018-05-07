@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="script/angular.js"></script>
+<script src="script/app.js"></script>
+<script src="script/math_controller.js"></script>
+<script src="script/math_service.js"></script>
+
+</head>
+<body ng-app="myApp">
+
+<!-- two controllers can be used in different blocks  -->
+
+<div ng-controller="Mathcontroller">
+First Number : <input  ng-model="x">
+<br><br>
+Second Number : <input  ng-model="y">
+<br><br>
+<input type="button" ng-click="fn_sum()" value="Login"> 
+<h2>{{result}}</h2>
+</div>
+
+
+
+</body>
+</html>

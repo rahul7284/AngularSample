@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Angular Controller</title>
+<script src="angular.js"></script>
+<script>
+var obj = angular.module("myApp",[]);
+obj.controller("Product_controller",function($scope){
+	$scope.prdobj={
+			pid : 1025,
+			pname :"sony camera",
+			price :"6000"
+			
+			
+	};
+});
+/* this is demo of collection sorting 
+
+*/
+obj.controller("Student_controller",function($scope){
+	$scope.prdobj={
+			sid : 1025,
+			sname :"rahul",
+			sclass :"mca"
+			
+			
+	};
+	$scope.students =[
+	                  {sname :"rohit",course :"Angular"},
+	                  {sname :"rahul", course :"Html"},
+	                  {sname : "rajiv",course : "Testing"}
+	                  ];
+	$scope.isReverse =false;
+	$scope.sortitem ="sname";
+	$scope.searchObj ={sname :"",course:""};
+});
+
+</script>
+</head>
+<body ng-app="myApp">
+
+<!-- two controllers can be used in different blocks  -->
+
+<div ng-controller="Student_controller">
+Student Name : <input ng-model="searchObj.sname">
+<br><br>
+Student course : <select ng-model="searchObj.course">
+<option value="">All Course</option>
+<option>AJS</option>
+<option>html</option>
+<option>js</option>
+</select>
+<br><br>
+<table border="2">
+<tr>
+<th>
+Student Name
+</th>
+<th>
+Course Name
+</th>
+
+</tr>
+<tr ng-repeat="item in students | filter:searchObj">
+<td>{{item.sname}}</td>
+<td>{{item.course}}</td>
+</tr>
+</table>
+</div>
+
+
+
+</body>
+
+
+</html>
